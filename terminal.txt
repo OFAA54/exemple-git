@@ -1,0 +1,148 @@
+imac@iMacs-iMac 6-Utiliser Git et Github pour gerer code source % ls
+1-Introduction          2-Introduction à Git    3-Les bases de Git      exemples-git
+imac@iMacs-iMac 6-Utiliser Git et Github pour gerer code source % cd exemples-git
+imac@iMacs-iMac exemples-git % ls
+Exercice-1      Exercice-2      article         cuisiner-facile
+imac@iMacs-iMac exemples-git % cd article
+imac@iMacs-iMac article % git status
+On branch master
+nothing to commit, working tree clean
+imac@iMacs-iMac article % git log
+commit bc14f341d59f92dde7ed007dde3df0a955620506 (HEAD -> master)
+Author: Francisco Arenas <panchoarenas@hotmail.fr>
+Date:   Thu Jun 15 21:38:11 2023 +0200
+
+    plus de détails
+
+commit e8061d804618f12fcf88500f71cc8eae309e20a2
+Author: Francisco Arenas <panchoarenas@hotmail.fr>
+Date:   Thu Jun 15 21:33:36 2023 +0200
+
+    ajouter une introduction
+imac@iMacs-iMac article % ls -l
+total 8
+-rw-r--r--  1 imac  admin  20 15 jun 21:36 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+nothing to commit, working tree clean
+imac@iMacs-iMac article % vi 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.Introduction.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+imac@iMacs-iMac article % git diff
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index 135cacb..ee85d32 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1 +1 @@
+-#Elements modifiés.
+\ No newline at end of file
++Elements modifiés!!!
+imac@iMacs-iMac article % git diff --color-words
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index 135cacb..ee85d32 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1 +1 @@
+#Elements modifiés.Elements modifiés!!!
+imac@iMacs-iMac article % vi 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.Introduction.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+imac@iMacs-iMac article % git diff
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index 135cacb..a9bff1a 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1 +1,2 @@
+-#Elements modifiés.
+\ No newline at end of file
++Elements modifiés!!!
++Une nouvelle ligne
+imac@iMacs-iMac article % git add 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   1.Introduction.txt
+
+imac@iMacs-iMac article % git diff
+imac@iMacs-iMac article % git diff --staged
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index 135cacb..a9bff1a 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1 +1,2 @@
+-#Elements modifiés.
+\ No newline at end of file
++Elements modifiés!!!
++Une nouvelle ligne
+imac@iMacs-iMac article % git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   1.Introduction.txt
+
+imac@iMacs-iMac article % vi 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   1.Introduction.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.Introduction.txt
+
+imac@iMacs-iMac article % git diff
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index a9bff1a..3bd9334 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1,2 +1,2 @@
+-Elements modifiés!!!
++lements modifiés?
+ Une nouvelle ligne
+imac@iMacs-iMac article % vi 1.Introduction.txt
+imac@iMacs-iMac article % git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   1.Introduction.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.Introduction.txt
+
+imac@iMacs-iMac article % git diff
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index a9bff1a..d0a30c1 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1,2 +1,2 @@
+-Elements modifiés!!!
++Elements modifiés?
+ Une nouvelle ligne
+imac@iMacs-iMac article % git diff --staged
+diff --git a/1.Introduction.txt b/1.Introduction.txt
+index 135cacb..a9bff1a 100644
+--- a/1.Introduction.txt
++++ b/1.Introduction.txt
+@@ -1 +1,2 @@
+-#Elements modifiés.
+\ No newline at end of file
++Elements modifiés!!!
++Une nouvelle ligne
+imac@iMacs-iMac article %
